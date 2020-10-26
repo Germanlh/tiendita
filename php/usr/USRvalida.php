@@ -10,6 +10,9 @@ else{
 }
 
 if($usr=="xito" && $psw=="123"){
+	session_start();
+	$_SESSION['activo']=true;
+	$_SESSION['usr']=$usr;
 	header("Location:../prueba.php");
 }
 else{
