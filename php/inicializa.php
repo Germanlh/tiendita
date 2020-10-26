@@ -1,17 +1,21 @@
 <?php
-/**************************************************************************************************/
-$conexiondb=mysql_connect("localhost","xito","g2r4*2YL1");
-if(!$conexiondb){die("No se Ha establecido la Conexion".mysql_error());}
-//mysql_query("SET NAMES 'utf8'");
+/******Conectamos con la Mysql *************************************************************/
+$server = "localhost";
+$usr = "xio";
+$psw = "g2r4*2YL1";
 
-/*********** Creamos Base de datos de Mysql *************************************************************/
-$sql="CREATE DATABASE crmkrea DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci";
-if(!mysql_query($sql, $conexiondb)){	echo "No se ha creado la Base de Datos".mysql_error();	}
+$cnxdb= new mysqli($server, $usr, $psw);//Conexion Base de datos
+if($cnxdb->connect_error){die("No se ha establecido la Conexion");}
 
-/*********** Seleccionamos Base de datos ****************************************************************/
-mysql_select_db("crmkrea",$conexiondb); 
+/****** Creamos la Base de Datos ************************************************************/
+$sql = "CREATE DATABASE crmkrea DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci";
+if ($cnxdb->query($sql) === TRUE) {/*echo "Base de Datos Creada.";*/} 
+else { die("Error al Crear la Base de Datos:". $cnxdb->error);}
 
-/*********** Creamos Tabla USUARIOS*******************************************************************/
+/****** Seleccionamos Base de datos ********************************************************/
+$cnxdb->select_db("crmkrea");
+
+/*********** Creamos Tabla USUARIOS********************************************************************/
 $sql="CREATE TABLE usuarios ( 
 		idkrea varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		PRIMARY KEY(idkrea),
@@ -20,17 +24,18 @@ $sql="CREATE TABLE usuarios (
 		password varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		permisos tinyint
 		) CHARACTER SET utf8 COLLATE utf8_general_ci "; 
-if(!mysql_query($sql,$conexiondb)){
-echo "<br><br>No se ha creado la Tabla usuarios: ".mysql_error();
-}
-/*********** Agregamos el primer super usuario ***********************************************************/
-$query=mysql_query("INSERT INTO 
-			usuarios (idkrea,status,usuario, password, permisos)
-			VALUES ('1111111111111',1,'program', 'margorp', 1)
-			");
-		if(!$query){die("PROBLEMAS: ".mysql_error());	}
 
-/*********** Creamos Tabla DIRECTORIO*****************************************************************/
+if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
+else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
+
+/*********** Agregamos el primer super usuario ***********************************************************/
+$sql= "INSERT INTO usuarios (idkrea,status,usuario, password, permisos)
+		VALUES ('1111111111111',1,'program', 'margorp', 1)
+		";
+if ($cnxdb->query($sql) === TRUE) {/*echo "Registro agregado a Usuarios.";*/} 
+else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
+		
+/*********** Creamos Tabla DIRECTORIO*****************************************************************
 $sql="CREATE TABLE directorio( 
 		idcliente varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		PRIMARY KEY(idcliente),
@@ -57,7 +62,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Directorio: ".mysql_error();
 }
 
-/*********** Creamos Tabla EMPRESA*******************************************************************/
+/*********** Creamos Tabla EMPRESA*******************************************************************
 $sql="CREATE TABLE empresa( 
 		idempresa varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		PRIMARY KEY(idempresa),
@@ -86,7 +91,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Empresa: ".mysql_error();
 }
 
-/*********** Creamos Tabla CALENDARIO ****************************************************************/
+/*********** Creamos Tabla CALENDARIO ****************************************************************
 $sql="CREATE TABLE calendario( 
 		idusuario varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		idcliente varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
@@ -104,7 +109,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Calendario: ".mysql_error();
 }
 
-/*********** Creamos Tabla RECADOS ******************************************************************/
+/*********** Creamos Tabla RECADOS ******************************************************************
 $sql="CREATE TABLE recados( 
 		iddestinatario varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		idreceptor varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
@@ -120,11 +125,8 @@ $sql="CREATE TABLE recados(
 if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Recados: ".mysql_error();
 }
-/****************************************************/
-/****************************************************/
-/****************************************************/
-/****************************************************/
-/*********** Creamos Tabla NOTA ********************************************************************/
+
+/*********** Creamos Tabla NOTA ********************************************************************
 $sql="CREATE TABLE nota( 
 		idcotizacion varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		datecotiza datetime,
@@ -156,7 +158,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Nota: ".mysql_error();
 }
 
-/*********** Creamos Tabla TRABAJOS ******************************************************************/
+/*********** Creamos Tabla TRABAJOS ******************************************************************
 $sql="CREATE TABLE trabajos( 
 		idnota varchar (13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		status tinyint,
@@ -178,7 +180,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Trabajos: ".mysql_error();
 }
 
-/*********** Creamos Tabla VENTAS estadistica ***********************************************************/
+/*********** Creamos Tabla VENTAS estadistica ***********************************************************
 $sql="CREATE TABLE ventas( 
 		lunes datetime,
 		sabado datetime,
@@ -195,7 +197,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Ventas: ".mysql_error();
 }
 
-/*********** Creamos Tabla SEMAFORO estadistica ********************************************************/
+/*********** Creamos Tabla SEMAFORO estadistica ********************************************************
 $sql="CREATE TABLE semaforo( 
 		idcliente varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		idvendedor varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
@@ -207,7 +209,7 @@ if(!mysql_query($sql,$conexiondb)){
 echo "<br><br>No se ha creado la Tabla Semaforo: ".mysql_error();
 }
 
-/************************ Cerramos la Conexion a la Base de datos*****************************************/
-mysql_close($conexiondb);
+/**Cerramos la Conexion a la Base de datos ******************************************************/
+$cnxdb->close();
 /************************************************************************************************/
 ?>
