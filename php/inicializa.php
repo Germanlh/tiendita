@@ -15,21 +15,23 @@ else { die("Error al Crear la Base de Datos:". $cnxdb->error);}
 /****** Seleccionamos Base de datos ********************************************************/
 $cnxdb->select_db("tiendita");
 
-/*********** Creamos Tabla USUARIOS********************************************************************/
+/*********** Creamos Tabla USUARIOS **********************************/
 $sql="CREATE TABLE usuarios ( 
-		id varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
-		psw varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
-		nombre varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		mail varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		psw varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		nombre varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		permisos tinyint,
-		PRIMARY KEY (id)
+		PRIMARY KEY (mail)
 		) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
 
 if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
 else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
 
 /*********** Agregamos el primer super usuario ***********************************************************/
-$sql= "INSERT INTO usuarios (id,psw,nombre, permisos)
-		VALUES ('admin','psw12345','administrador', 1)
+//$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$psw=password_hash("12345", PASSWORD_DEFAULT);
+$sql= "INSERT INTO usuarios (mail,psw,nombre, permisos)
+		VALUES ('admin@admin','".$psw."','administrador', 1)
 		";
 if ($cnxdb->query($sql) === TRUE) {/*echo "Registro agregado a Usuarios.";*/} 
 else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
@@ -211,9 +213,4 @@ echo "<br><br>No se ha creado la Tabla Semaforo: ".mysql_error();
 /**Cerramos la Conexion a la Base de datos ******************************************************/
 $cnxdb->close();
 /************************************************************************************************/
-
-
-
-
-
 ?>

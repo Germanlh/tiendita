@@ -40,6 +40,7 @@ if($acceso){//solo si se permite el acceso
 	if($repeticiones==0){//si no existe entonces agregamos el registro
 		$idkrea="incompleto";
 		$status=ACTIVO; 
+		//$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$query=mysql_query(
 			"INSERT INTO 
 			usuarios (idkrea,status,usuario, password, permisos)
