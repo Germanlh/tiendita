@@ -26,7 +26,9 @@
 				if(isset($_GET['mensaje'])){
 					$mensaje=$_GET['mensaje'];
 				}
-				else{$mensaje=0;}
+				else{
+					$mensaje=0;
+				}
 				
 				echo"<br><br> <p>";
 				switch($mensaje){//evaluamos el tipo de error y enviamos el mensaje de acuerdo  al problema

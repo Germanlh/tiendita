@@ -1,36 +1,35 @@
 <?php
 /******Conectamos con la Mysql *************************************************************/
 $server = "localhost";
-$usr = "xio";
+$usr = "xito";
 $psw = "g2r4*2YL1";
 
 $cnxdb= new mysqli($server, $usr, $psw);//Conexion Base de datos
 if($cnxdb->connect_error){die("No se ha establecido la Conexion");}
 
 /****** Creamos la Base de Datos ************************************************************/
-$sql = "CREATE DATABASE crmkrea DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci";
+$sql = "CREATE DATABASE tiendita DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci";
 if ($cnxdb->query($sql) === TRUE) {/*echo "Base de Datos Creada.";*/} 
 else { die("Error al Crear la Base de Datos:". $cnxdb->error);}
 
 /****** Seleccionamos Base de datos ********************************************************/
-$cnxdb->select_db("crmkrea");
+$cnxdb->select_db("tiendita");
 
 /*********** Creamos Tabla USUARIOS********************************************************************/
 $sql="CREATE TABLE usuarios ( 
-		idkrea varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,
-		PRIMARY KEY(idkrea),
-		status tinyint,
-		usuario varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
-		password varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
-		permisos tinyint
-		) CHARACTER SET utf8 COLLATE utf8_general_ci "; 
+		id varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		psw varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		nombre varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		permisos tinyint,
+		PRIMARY KEY (id)
+		) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
 
 if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
 else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
 
 /*********** Agregamos el primer super usuario ***********************************************************/
-$sql= "INSERT INTO usuarios (idkrea,status,usuario, password, permisos)
-		VALUES ('1111111111111',1,'program', 'margorp', 1)
+$sql= "INSERT INTO usuarios (id,psw,nombre, permisos)
+		VALUES ('admin','psw12345','administrador', 1)
 		";
 if ($cnxdb->query($sql) === TRUE) {/*echo "Registro agregado a Usuarios.";*/} 
 else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
@@ -212,4 +211,9 @@ echo "<br><br>No se ha creado la Tabla Semaforo: ".mysql_error();
 /**Cerramos la Conexion a la Base de datos ******************************************************/
 $cnxdb->close();
 /************************************************************************************************/
+
+
+
+
+
 ?>
