@@ -8,7 +8,7 @@ else{
 	$usr="";
 	$psw="";
 }
-$usr=strtolower($usr);// todos los usuarios se registran en minusculas
+
 /************** conectamos a la BD *******************************/
 include("../conectadb.php");
 

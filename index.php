@@ -16,15 +16,17 @@
 			veras la siguiente pagina editada-->
 				<form method="POST" action="php/usr/USRvalida.php" id="acceder_frm" name="acceder_frm" enctype="application/x-www-form-urlencoded">
 
-					<input type="mail" id="usr" name="usr" placeholder="Nombre de usuario" required >
+					<input type="email" id="usr" name="usr" placeholder="email del usuario" required >
 					<input type="password" name="psw" id="psw" placeholder="Contraseña" required />
 					<input type="submit" id="enviar" name="enviar" value="Accesar">
 				</form>
 				<br><br><br>
 				<form method="POST" action="php/usr/USRagrega.php" id="registrar_frm" name="registrar_frm" enctype="application/x-www-form-urlencoded">
 
-					<input type="text" id="usr" name="usr" placeholder="Nombre de usuario" required >
+					<input type="email" id="usr" name="usr" placeholder="e-mail" required >
+					<input type="text" id="nombre" name="nombre" placeholder="Nombre" required >
 					<input type="password" name="psw" id="psw" placeholder="Contraseña" required />
+					<input type="password" name="conpsw" id="conpsw" placeholder="Confirma Contraseña" required />
 					<input type="submit" id="enviar" name="enviar" value="Accesar">
 				</form>
 <!--********************************************************************************************-->							
@@ -38,6 +40,12 @@
 						break;
 					case 2: 
 						echo"<h1><mark>Error en Password</mark></h1>";
+						break;
+					case 3: 
+						echo"<h1><mark> Registro Exitoso</mark></h1>";
+						break;
+					case 4: 
+						echo"<h1><mark>Ya existe este usuario</mark></h1>";
 						break;
 					default: break;
 					}
