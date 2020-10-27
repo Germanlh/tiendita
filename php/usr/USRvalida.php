@@ -13,7 +13,7 @@ else{
 include("../conectadb.php");
 
 /*** Consultamos el id y psw ********************************* */
-$sql = "SELECT mail, psw FROM usuarios WHERE mail='".$usr."'";
+$sql = "SELECT mail, psw, nombre FROM usuarios WHERE mail='".$usr."'";
 $resultado=$cnxdb->query($sql);
 $fila=$resultado->fetch_array(MYSQLI_BOTH);
 
@@ -27,6 +27,7 @@ else{//Existe Coincidencia
 		session_start();
 		$_SESSION['activo']=true;
 		$_SESSION['usr']=$usr;
+		$_SESSION['nombre']=$fila['nombre'];
 		header("Location:../prueba.php");
 		}
 	else{//Si no coincide alguno regresamos

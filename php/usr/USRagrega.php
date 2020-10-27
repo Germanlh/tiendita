@@ -11,11 +11,10 @@ else{
 	$psw="";
 	$nom="";
 }
-//echo "USR: [".$usr."] PSW: [".$psw."] Nombre: [".$nom."] <br>";
 /************** conectamos a la BD *******************************/
 include("../conectadb.php");
 
-/*** Consultamos el id y psw ********************************* */
+/*** Consultamos el usuario y psw ********************************* */
 $sql = "SELECT mail FROM usuarios WHERE mail='".$usr."'";
 $resultado=$cnxdb->query($sql);
 $fila=$resultado->fetch_array(MYSQLI_BOTH);

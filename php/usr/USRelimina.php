@@ -1,5 +1,6 @@
 <?php
-
+echo "Eliminamos al usuario";
+/*********************************************************** */
 include("../funciones.php");
 sinpermiso(1,1,0);// sinpermiso($jerarquia,$mensaje,$noadmitir) msg 1->  Sin Permisos 2->  No Resgistrado
 
@@ -22,5 +23,5 @@ if($_SESSION['permisos']==ADMIN){
 	
 }
 else{sinpermiso(1,1,1);}// sinpermiso($jerarquia,$mensaje,$noadmitir) msg 1->  Sin Permisos 2->  No Resgistrado
-
+/************************************************************* */
 ?>

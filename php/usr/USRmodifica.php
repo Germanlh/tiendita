@@ -1,5 +1,42 @@
 <?php
+include("../sesion.php");
 
+echo "Eliminamos usuario";
+/***Recibimos variables para Cambiar al usuario **********************/
+if(isset($_POST['enviar'])){
+	$verpsw=$_POST['verpsw'];
+	$usr=$_POST['usr'];
+	$psw=$_POST['psw'];
+	$nom=$_POST['nombre'];
+}
+else{
+	$usr="";
+	$psw="";
+	$nom="";
+}
+//echo "New USR:".$usr." NewNom: ".$nom."<br>";
+//echo "Old USR:".$_SESSION['usr']." Old Nom: ".$_SESSION['nombre']."<br>";
+/************** conectamos a la BD *******************************/
+include("../conectadb.php");
+/*** Consultamos el usuario y psw ********************************* */
+$sql = "SELECT mail, psw FROM usuarios WHERE mail='".$_SESSION['usr']."'";
+$resultado=$cnxdb->query($sql);
+$fila=$resultado->fetch_array(MYSQLI_BOTH);
+
+/** Verificamos si Corresponde ****************************** */
+if (empty($fila)){//No existe coincidencia con usr Insertamos en la BD
+
+	$psw=password_hash($psw, PASSWORD_DEFAULT);//Generamos la encriptacion del psw
+	$sql= "INSERT INTO usuarios (mail,psw,nombre, permisos)
+			VALUES ('".$usr."','".$psw."','".$nom."', 2)
+			";
+	if ($cnxdb->query($sql) === TRUE){header("Location:../../index.php?mensaje=3");}//Registro exitoso 
+	else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
+}
+else{//Existe Coincidencia
+	header("Location:../../index.php?mensaje=4");//No se realizo registro
+	}
+/******************************************************** *
 include("../funciones.php");
 sinpermiso(1,1,0);// sinpermiso($jerarquia,$mensaje,$noadmitir) msg 1->  Sin Permisos 2->  No Resgistrado
 
@@ -15,7 +52,7 @@ sinpermiso(1,1,0);// sinpermiso($jerarquia,$mensaje,$noadmitir) msg 1->  Sin Per
 	$_SESSION['oldusr']="nada";
 	$_SESSION['oldidkrea']="nada";
 
-/************** conectamos a la BD**************/
+/************** conectamos a la BD**************
 	$conexion=conectabd("crmkrea");
 	
 	if($_SESSION['permisos']==ADMIN&&$oldidkrea!=$_SESSION['idkrea']){
@@ -43,5 +80,5 @@ sinpermiso(1,1,0);// sinpermiso($jerarquia,$mensaje,$noadmitir) msg 1->  Sin Per
 		}
 	else{ redirige(1);}
 
-
+/************************************************************** */
 ?>
