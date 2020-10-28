@@ -47,6 +47,12 @@
 					case 4: 
 						echo"<h1><mark>Ya existe este usuario</mark></h1>";
 						break;
+					case 5: 
+						echo"<h1><mark>Cambio de datos Exitoso</mark></h1>";
+						break;
+					case 6: 
+						echo"<h1><mark>Pasword invalido</mark></h1>";
+						break;
 					default: break;
 					}
 				echo"</p>";	
