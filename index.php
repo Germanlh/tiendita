@@ -25,7 +25,6 @@ else{
         default:
             break;
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,7 +40,6 @@ else{
 	</header>
     <main>
         <?php include $page;?>
-
     </main>
     <footer>
     </footer>    

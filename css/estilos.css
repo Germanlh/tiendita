@@ -33,10 +33,12 @@ header>a:hover{
     color: #f1e189;
 }
 h1{
-    color:red;
+    color: blue;
     font-size: 3rem;
+    display: inline;
 }
 main{
-    background-color: lightgray;
-    color: black;
+    background-color: green;
+    width: 100vw;
+    min-height: 100vh;
 }
