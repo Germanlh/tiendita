@@ -45,7 +45,7 @@ body {
   width: 100%;
   margin-bottom: 20px;
 }
-.login-box input[type="text"], .login-box input[type="password"] {
+.caja-texto {
   border: none;
   border-bottom: 1px solid #fff;
   background: transparent;
@@ -78,4 +78,3 @@ body {
 .login-box a:hover {
   color: #fff;
 }/**/
-/*Gilberto Huerta Ramos08:50*/
