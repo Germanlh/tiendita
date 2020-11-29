@@ -20,7 +20,7 @@ if(isset($_POST['enviar'])){
 		$sql= "DELETE FROM usuarios WHERE mail='".$_SESSION['usr']."'";
 	
 		if ($cnxdb->query($sql) === TRUE){
-			include("../../cerrarsesion.php");
+			header("Location:../../index.php?mensaje=8");//Borrado Exitoso
 		}//Eliminacion exitoso 
 		else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
 	}
@@ -38,19 +38,30 @@ if(isset($_POST['enviar'])){
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Eliminamos Cuenta</title>
+    
+    <link rel="stylesheet" href="../../css/estilizar.css">
+    <link rel="shortcut icon" href="../../img/favicon.png" type="image/x-icon">
 </head>
-<body>
-	<h2>Para Eliminar tu cuenta por favor vcerifica tu contraseña</h2>
-	<form method="POST" action="USRelimina.php" id="elimina_frm" name="elimina_frm" enctype="application/x-www-form-urlencoded">
+<body><!--*******************************************************************-->	
 
-		<input type="password" name="verpsw" id="verpsw" placeholder="Verifica tu Contraseña" required />
+<div class="login-box">
+	<img src="../../img/logoAAA.svg" class="avatar" alt="Avatar Image">
+	  <h2>Para Eliminar tu cuenta por favor verifica tu contraseña</h2>
+      <br><br>
+      <form method="POST" action="USRelimina.php" id="elimina_frm" name="elimina_frm" enctype="application/x-www-form-urlencoded">
+		
+	 	 <!-- PASSWORD INPUT -->
+		<label for="psw">Password</label>
+		<input type="password" name="verpsw" id="verpsw" class="caja-texto" placeholder="Verifica tu Contraseña" required />
+        
 
-		<input type="submit" id="enviar" name="enviar" value="Accesar">
+        <input type="submit" id="enviar" name="enviar" value="Confirmar">
+      </form>
+</div>
 
-	</form>
-
-</body>
+</body><!--*******************************************************************-->
 </html>
+

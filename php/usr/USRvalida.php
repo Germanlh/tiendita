@@ -13,7 +13,7 @@ else{
 include("../conectadb.php");
 
 /*** Consultamos el id y psw ********************************* */
-$sql = "SELECT mail, psw, nombre FROM usuarios WHERE mail='".$usr."'";
+$sql = "SELECT mail, psw, nombre, permisos FROM usuarios WHERE mail='".$usr."'";
 $resultado=$cnxdb->query($sql);
 $fila=$resultado->fetch_array(MYSQLI_BOTH);
 
@@ -22,15 +22,17 @@ if (empty($fila)){//No existe coincidencia con id
 	header("Location:../../index.php?mensaje=1");
 }
 else{//Existe Coincidencia
-	//Usamos password_verify($psw,$hash) para revisar concordancias con elñ password encriptado
+	//Usamos password_verify($psw,$hash) para revisar concordancias con el password encriptado
 	if($fila['mail']==$usr&&password_verify($psw, $fila['psw'])){//Verifica que coincidan ambos atributos para iniciar sesión y permitir accesos
 		session_start();
 		$_SESSION['activo']=true;
 		$_SESSION['usr']=$usr;
 		$_SESSION['nombre']=$fila['nombre'];
+		$_SESSION['permisos']=$fila['permisos'];
+		/* Si permisos =1 ventana Admin permisos =2 Tienda */
 		header("Location:../prueba.php");
 		}
-	else{//Si no coincide alguno regresamos
+	else{//No Coincide el Password y regresamos
 		header("Location:../../index.php?mensaje=2");
 	}
 } 
