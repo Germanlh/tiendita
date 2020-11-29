@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiendita AAA</title>
-    <link href="css/estilos.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
   </head>
-  <body>
-
+ 
+  <body><!--**************************************************-->
+    
     <div class="login-box">
       <img src="img/logoAAA.svg" class="avatar" alt="Avatar Image">
       <h1>Login Here</h1>
@@ -24,5 +25,6 @@
         <a href="#">Don't have An account?</a>
       </form>
     </div>
-  </body>
+
+  </body><!--**************************************************-->
 </html>
