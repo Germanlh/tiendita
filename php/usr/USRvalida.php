@@ -30,7 +30,7 @@ else{//Existe Coincidencia
 		$_SESSION['nombre']=$fila['nombre'];
 		$_SESSION['permisos']=$fila['permisos'];
 		/* Si permisos =1 ventana Admin permisos =2 Tienda */
-		header("Location:../prueba.php");
+		header("Location:../tiendita.php");
 		}
 	else{//No Coincide el Password y regresamos
 		header("Location:../../index.php?mensaje=2");
