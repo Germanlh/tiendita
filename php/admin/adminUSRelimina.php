@@ -13,7 +13,7 @@ if(isset($_GET['mail'])){
 		$sql= "DELETE FROM usuarios WHERE mail='".$usr."'";
 	
 		if ($cnxdb->query($sql) === TRUE){
-			header("Location:adminUSR.php");//Borrado Exitoso
+			header("Location:../tiendita.php?op=1&mensaje=6");//Borrado Exitoso
 		}//Eliminacion exitoso 
 		else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
 	}

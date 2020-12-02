@@ -31,18 +31,18 @@ if($psw==$conpsw&&($permisos>=1&&$permisos<=2)){//Ambos psw coinciden
 		$sql= "INSERT INTO usuarios (mail,psw,nombre, permisos)
 				VALUES ('".$usr."','".$psw."','".$nom."', ".$permisos.")
 				";
-		if ($cnxdb->query($sql) === TRUE){header("Location:adminUSR.php?mensaje=4");}//Registro exitoso 
+		if ($cnxdb->query($sql) === TRUE){header("Location:../tiendita.php?op=1&mensaje=4");}//Registro exitoso 
 		else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
 	}
 	else{//Existe Coincidencia
-		header("Location:adminUSR.php?mensaje=3");//Usuario Existente
+		header("Location:../tiendita.php?op=1&mensaje=3");//Usuario Existente
 		}
 	/** Liberamos resultado y cerramos BD *************************  */
 	$resultado->free();
 	$cnxdb->close();//cerramos la base de datos
 
 }else{
-	header("Location:adminUSR.php?mensaje=5");//No se realizo registro PSW no coincide
+	header("Location:../tiendita.php?op=1&mensaje=5");//No se realizo registro PSW no coincide
 }
 
 /************************************************************************ */

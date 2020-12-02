@@ -13,6 +13,19 @@ if($_SESSION['activo']){
             break;
     }
 }
+if(isset($_GET['op'])){
+    switch($_GET['op']){
+        case 1:
+            $page="admin/adminUSR.php";
+            break;
+        case 2:
+            $page="admin/adminPRO.php";
+            break;
+        default:
+            break;
+    }
+}
+
 /* PHP PHP PHP PHP  PHP PHP PHP PHP  PHP PHP  PHP PHP  PHP PHP  PHP PHP */
 ?>
 <!DOCTYPE html>

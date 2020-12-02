@@ -10,27 +10,23 @@ if(isset($_POST['enviar'])){
     $permisos=$_POST['permisos'];
 }
 
-/************** conectamos a la BD *******************************/
-include("../conectadb.php");
+if($psw==$conpsw&&($permisos>=1&&$permisos<=2)){//Ambos psw coinciden
+	/************** conectamos a la BD *******************************/
+	include("../conectadb.php");
 
-/*** Consultamos el usuario y psw ********************************* */
-
-/** Verificamos si Corresponde ****************************** */
-if($psw==$conpsw){
-	$psw=password_hash($psw, PASSWORD_DEFAULT);//Generamos la encriptacion del psw
+		$psw=password_hash($psw, PASSWORD_DEFAULT);//Generamos la encriptacion del psw
+		$sql= "UPDATE usuarios SET mail='".$usr."',psw='".$psw."',nombre='".$nom."',permisos='".$permisos."' WHERE mail='".$usr."'";
+		if ($cnxdb->query($sql) === TRUE){header("Location:../tiendita.php?op=1&mensaje=1");}//Registro exitoso 
+		else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
 	
-	$sql= "UPDATE usuarios SET mail='".$usr."',psw='".$psw."',nombre='".$nom."',permisos='".$permisos."' WHERE mail='".$usr."'";
+	$cnxdb->close();//cerramos la base de datos
 
-	if ($cnxdb->query($sql) === TRUE){
-		header("Location:adminUSR.php?mensaje=1");
-	}//Registro exitoso 
-	else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
+}else{
+	header("Location:../tiendita.php?op=1&mensaje=5");//No se realizo registro PSW no coincide
 }
-else{// NO Existe Coincidencia
-	header("Location:adminUSR.php?mensaje=2");//No se realizo el cambio
-	}
 
-/** Liberamos resultado y cerramos BD *************************  */
-$cnxdb->close();//cerramos la base de datos
-/************************************************************** */
+
+
+
+
 ?>

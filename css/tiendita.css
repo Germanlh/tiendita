@@ -75,4 +75,19 @@
   .button:hover{
       background-color: #f1e189;
   }
+  .pagina-tiendita{
+      width: 80%;
+      min-height: 90vh;
+      background-color: rgba(255, 255, 255, 0.80);
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
+      margin: 0.5rem auto 0 ;
+      border-radius: 0.5rem;
+  }
+  .msj{
+      padding: 0.2rem;
+      text-align: center;
+      font-size: 1.3rem;
+      background-color: red;
+      color: white;
+  }
  
