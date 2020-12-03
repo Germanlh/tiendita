@@ -76,7 +76,7 @@
       background-color: #f1e189;
   }
   .pagina-tiendita{
-      width: 80%;
+      width: fit-content;
       min-height: 90vh;
       background-color: rgba(255, 255, 255, 0.80);
       box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
@@ -89,5 +89,16 @@
       font-size: 1.3rem;
       background-color: red;
       color: white;
+  }
+  .img-prod-admin{
+      width: 3rem;
+  }
+  .caja-texto{
+        width:7rem;
+        text-align: center;
+        border-radius: 0.2rem;
+        height:2rem;
+        color: rgb(17, 17, 17);
+      }
   }
  

@@ -17,7 +17,7 @@ $cnxdb->select_db("tiendita");
 
 /*********** Creamos Tabla USUARIOS **********************************/
 $sql="CREATE TABLE usuarios ( 
-		mail varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci,
+		mail varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		psw varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		nombre varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci,
 		permisos tinyint,
@@ -36,6 +36,20 @@ $sql= "INSERT INTO usuarios (mail,psw,nombre, permisos)
 if ($cnxdb->query($sql) === TRUE) {/*echo "Registro agregado a Usuarios.";*/} 
 else {die("Error al Crear registro en Usuarios:". $cnxdb->error);}
 		
+/*********** Creamos Tabla PRODUCTO **********************************/
+$sql="CREATE TABLE producto ( 
+	id_producto int AUTO_INCREMENT,
+	nombre varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci,
+	clase varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci,
+	precio_unitario float,
+	existencias int,
+	descripcion varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci,
+	imagen varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci,
+	PRIMARY KEY (id_producto)
+	) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
+
+if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
+else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
 /*********** Creamos Tabla DIRECTORIO*****************************************************************
 $sql="CREATE TABLE directorio( 
 		idcliente varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci,

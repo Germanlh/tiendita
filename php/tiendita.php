@@ -46,6 +46,9 @@ if(isset($_GET['op'])){
                 <?php
                 if($_SESSION['permisos']!=1){
                     echo '<a class="link oculto" id="elimina" href="usr/USRelimina.php">Elimina</a>';
+                }else{
+                    echo '<a class="link" id="usuarios" href="?op=1">Usuarios</a>';
+                    echo '<a class="link" id="productos" href="?op=2">Productos</a>';
                 }
                 ?>
             </p>

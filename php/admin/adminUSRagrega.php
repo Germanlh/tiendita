@@ -1,5 +1,7 @@
 <?php
 /************************************************************************** */
+include("../sesion.php");
+
 /***Recibimos variables para Validar usuario **********************/
 if(isset($_POST['enviar'])){
 	$usr=$_POST['usr'];
