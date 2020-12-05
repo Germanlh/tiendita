@@ -22,6 +22,9 @@ if(isset($_GET['op'])){
         case 2:
             $page="admin/adminPRO.php";
             break;
+        case 3:
+            $page="admin/adminPED.php";
+            break;
         default:
             break;
     }
@@ -51,6 +54,7 @@ if(isset($_GET['op'])){
                     }else{
                         echo '<a class="link" id="usuarios" href="?op=1">Usuarios</a>';
                         echo '<a class="link" id="productos" href="?op=2">Productos</a>';
+                        echo '<a class="link" id="pedidos" href="?op=3">Pedidos</a>';
                     }
                     ?>
                 </p>

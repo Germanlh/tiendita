@@ -2,4 +2,5 @@
     <h2>ADMINISTRAR</h2>
     <a class="button" href="?op=1">Usuarios</a>
     <a class="button" href="?op=2">Productos</a>
+    <a class="button" href="?op=3">Pedidos</a>
 </div>

@@ -39,7 +39,6 @@ echo "<h2 class='msj'>".$msj."</h2>";
           <th>Clase</th>
           <th>Precio Unit.</th>
           <th>Existencias</th>
-          <th>Descripcion</th>
           <th></th>
           <th></th>
       </tr>
@@ -94,7 +93,6 @@ echo "<h2 class='msj'>".$msj."</h2>";
                 </td>
                 <td><input type="text" id="punit" name="punit" class="caja-texto" value="'.$fila['precio_unitario'].'"></td>
                 <td><input type="text" id="existencias" name="existencias" class="caja-texto" value="'.$fila['existencias'].'"></td>   
-                <td><input type="text" id="descripcion" name="descripcion" class="caja-texto" value="'.$fila['descripcion'].'"></td>
                 <td><input type="submit" id="enviar" name="enviar" value="Modificar"></td>
                 <td><input type="file" id="foto" name="foto" value="Imagen"></td>
               </form>
@@ -123,7 +121,6 @@ echo "<h2 class='msj'>".$msj."</h2>";
     </select>
     <input type="text" id="punit" name="punit" class="caja-texto" placeholder="precio unit">
     <input type="text" id="existencias" name="existencias" class="caja-texto" placeholder="Existencias">
-    <textarea name="descripcion" id="descripcion" rows="4" cols="50" placeholder="Descripcion"></textarea>
     <input type="submit" id="enviar" name="enviar" value="Agregar">
 </form>
 </div><!--************************************************************** -->

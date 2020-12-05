@@ -1,3 +1,23 @@
+<?php
+        /* PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP PHP */
+$msj="";
+if(isset($_GET['mensaje'])){
+    $mensaje=$_GET['mensaje'];
+    }
+else{$mensaje=0;}
+  switch($mensaje){//evaluamos el tipo de error y enviamos el mensaje de acuerdo  al problema
+    case 1: 
+      $msj="Su compra se ha registrado Correctamente";
+      break;
+    case 2: 
+      $msj="Compra Cancelado";
+      break;
+    default: 
+      break;
+    }
+echo "<h2 class='msj'>".$msj."</h2>";
+?>
+
 
 <nav class="category_list wrap">
     <a href="#" class="category_item" category="botanas">botanas</a>

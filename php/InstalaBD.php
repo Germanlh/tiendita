@@ -27,7 +27,7 @@ $sql="CREATE TABLE usuarios (
 if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
 else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
 
-/*********** Agregamos el primer super usuario ***********************************************************/
+/*********** Agregamos el primer usuario administrador ***********************************************************/
 //$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $psw=password_hash("12345", PASSWORD_DEFAULT);
 $sql= "INSERT INTO usuarios (mail,psw,nombre, permisos)
@@ -43,9 +43,33 @@ $sql="CREATE TABLE producto (
 	clase varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci,
 	precio_unitario float,
 	existencias int,
-	descripcion varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci,
 	imagen varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci,
 	PRIMARY KEY (id_producto)
+	) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
+
+if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
+else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
+
+/*********** Creamos Tabla VENTA **********************************/
+$sql="CREATE TABLE venta ( 
+	id_venta int AUTO_INCREMENT,
+	id_producto int,
+	cantidad int,
+	precio_unitario float,
+	id_nota int,
+	PRIMARY KEY (id_venta)
+	) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
+
+if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 
+else { die("Error al Crear la Tabla Usuarios:". $cnxdb->error);}
+/*********** Creamos Tabla PRODUCTO **********************************/
+$sql="CREATE TABLE nota ( 
+	id_nota int AUTO_INCREMENT,
+	id_usr varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci,
+	total decimal,
+	fecha timestamp,
+	servido tinyint,
+	PRIMARY KEY (id_nota)
 	) CHARACTER SET utf8 COLLATE utf8_general_ci"; 
 
 if ($cnxdb->query($sql) === TRUE) {/*echo "Tabla Usuarios Creada.";*/} 

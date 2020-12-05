@@ -4,10 +4,10 @@
 /************** conectamos a la BD *******************************/
 include("../conectadb.php");
 /****************************************************************/
-$cambio=false; $suma=0; $importe=0;
+$cambio=false;$importe=0;
 if(isset($_GET['p'])){
 	$cont=$_SESSION['contador'];
-	
+	$_SESSION['total']=0;
 	for($i = 0;$i< $_SESSION['contador'];$i++){
 		if($_SESSION['producto'][$i]==$_GET['p']){
 			$_SESSION['cantidad'][$i] += $_GET['cant'];
@@ -30,7 +30,14 @@ if(isset($_GET['x'])){
 		header("Location:../tiendita.php");
 	}
 }
-
+if(isset($_GET['cancela'])){
+	unset($_SESSION['producto']);
+	unset($_SESSION['cantidad']);
+	unset($_SESSION['total']);
+	$_SESSION['contador']=0;
+	header("Location:../tiendita.php?mensaje=2");
+	
+}
 /*
 for($i = 0;$i< $_SESSION['contador'];$i++){
 	echo 'Cantidad: '.$_SESSION['cantidad'][$i].'  ';
@@ -64,7 +71,7 @@ if($_SESSION['contador']>0){
 				<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button>X</button></a></td>
 			</tr>
 			";
-			$suma += $importe;
+			$_SESSION['total'] += $importe;
 		}
 	}
 	echo "
@@ -72,14 +79,19 @@ if($_SESSION['contador']>0){
 			<td></td>
 			<td></td>
 			<td>total</td>
-			<td>".number_format($suma,2)."</td>
+			<td>".number_format($_SESSION['total'],2)."</td>
 		</tr>
 		";
 	echo "</table>";
+	echo "
+		<a href='productos/poncarrito.php?cancela=1'><button>Cancelar</button></a>
+		<a href='productos/confirmar.php'><button>Comprar</button></a>
+		";
 	
 	/************************************************************************* */
 	$resultado->free();//Liberamos el resultado
 	$cnxdb->close();//cerramos la base de datos
+	
 }
 //<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button>X</button></a></td>
 //<td><button value='".$_SESSION['producto'][$i]."' class='quitar'>X</button></td>

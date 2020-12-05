@@ -9,14 +9,12 @@ if(isset($_POST['enviar'])){
 	$clase=$_POST['clase'];
 	$punit=$_POST['punit'];
     $existencias=$_POST['existencias'];
-    $descripción=$_POST['descripcion'];
 }
 else{
 	$nombre="";
 	$clase="";
 	$punit="";
     $existencias="";
-    $descripción="";
 }
 if($_FILES['foto']['error']>0){
     $sql= "UPDATE producto SET 
@@ -24,7 +22,6 @@ if($_FILES['foto']['error']>0){
             clase='".$clase."', 
             precio_unitario='".$punit."', 
             existencias='".$existencias."', 
-            descripcion='".$descripción."' 
             WHERE id_producto='".$id."'
 			";
 }
@@ -39,7 +36,6 @@ else{
             clase='".$clase."', 
             precio_unitario='".$punit."', 
             existencias='".$existencias."', 
-            descripcion='".$descripción."',
             imagen='".$nom_foto."' 
             WHERE id_producto='".$id."'
 			";
