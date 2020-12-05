@@ -21,27 +21,92 @@
   }
   header{
       width: 100%;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       background-color: #01c5c4;
       color: white;
       padding: 0.5rem;
   }
-  /*****************************/
+  /***************************************/
+  /******* Encabezado **********************/
   .oculto{
-      display: none;
+	  display: none;
   }
-  .nombre:hover, .link:hover {
-      color: #f1e189;
-      cursor: pointer;
-  }
+  
   .link{
       text-decoration: none;
       color: white;
-      margin: 0 1rem;
-      border-left: 0.3rem solid white;
+      margin: 0 0.2rem;
+      border-left: 0.2rem solid white;
       padding: 0 1rem;
   }
+  .encabezado{
+    /* background-color: darkgray; */
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.menu:hover, .link:hover{
+	color: #f1e189;
+	cursor: pointer;
+}
+.titulo{
+	display: inline;
+	font-size: 1.5rem;
+	margin: auto;
+}
+.icono {
+	height: 1.5rem;
+}
+  
+.wrap{
+	max-width: 1200px;
+	margin: 0 auto;
+}
   /***** Vista Admin *************/
+  /****** TABLA ****************************/
+table {
+	/* width: 100%; */
+	border: 1px solid rgb(138, 138, 138);
+	margin: 0 auto;
+ }
+ th, td {
+	/* width: 25%; */
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid  rgb(138, 138, 138);
+	border-collapse: collapse;
+	padding: 0.3rem;
+	caption-side: bottom;
+ }
+ caption, th {
+	padding: 0.3rem;
+	color: #fff;
+	background:#f39233;
+ }
+ .tabusr tr:nth-child(even){
+	background-color: rgb(218, 218, 218);
+ }
+ .tabusr tr:nth-child(odd) {
+	background-color: rgb(185, 185, 185);
+}
+.botoncito {
+	 padding: 0.15rem;
+	 font-size: 1rem;
+ }
+
+
+ .subir{
+    padding: 5px 10px;
+    background: #f55d3e;
+    color:#fff;
+    border:0px solid #fff;
+}
+ 
+.subir:hover{
+    color:#fff;
+    background: #f7cb15;
+}
+ 
   .login-box{ 
     width: 320px;
     height: auto;
@@ -76,12 +141,13 @@
       background-color: #f1e189;
   }
   .pagina-tiendita{
-      width: fit-content;
+      max-width: 1200px;
       min-height: 90vh;
       background-color: rgba(255, 255, 255, 0.80);
       box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
-      margin: 0.5rem auto 0 ;
-      border-radius: 0.5rem;
+	  margin: 0.5rem auto 0 ;
+	  padding: 0.5rem;
+      border-radius: 0.6rem;
   }
   .msj{
       padding: 0.2rem;
@@ -94,34 +160,39 @@
       width: 3rem;
   }
   .caja-texto{
-        width:7rem;
+        width:90%;
         text-align: center;
         border-radius: 0.2rem;
-        height:2rem;
-        color: rgb(17, 17, 17);
-      }
+		height:2rem;
+		font-size: 1rem;
+		color: rgb(17, 17, 17);
+		background-color: rgba(255, 255, 255, 0.65);
+		border: none;
+	  }
+	.caja-texto2{
+		width:20%;
+		text-align: center;
+		border-radius: 0.2rem;
+		height:2rem;
+		font-size: 1rem;
+		color: rgb(17, 17, 17);
+		background-color: rgba(162, 241, 166, 0.8);
+		border: none;
+    }
   
 /* Carrito de Compra*/
 .carro{
-	width: 100%;
-	background-color: black;
+	position: absolute;
+	right: 4rem;
+	top: 3rem;
+	background-color: rgba(0, 0, 0, 0.70);
 	color: white;
+	padding: 1rem;
+	border-radius: 0.6rem;
+	z-index: 100;
 }
  /*** Vista Productos ****************/
- .encabezado{
-    /* background-color: darkgray; */
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-.icono {
-	height: 2rem;
-}
-  
-.wrap{
-	max-width: 1200px;
-	margin: 0 auto;
-}
+ 
 .category_list{/*NAV Botones de las categorías*/
     display: flex;
     padding: 0.3rem;
@@ -130,19 +201,25 @@
     height: 3rem;
     /* background-color: darkcyan; */
 }
+/* paleta ********************************************************
+    color: #01c5c4 ; //Verde Obscuro
+    color: #b8de6f; //Verde claro
+    color: #f1e189; // Amarillo
+    color: #f39233; // Naranja
+/***************************************************************/
 .category_item{/*Botones de las categorias*/
 	width:15%;
 	padding: 0.2rem;
-	color: #fff;
-	background: rgb(7, 6, 6);
+	color:black;
+	background:#f39233;
 	text-align: center;
 	text-decoration: none;
 	font-size: 1.2rem;
 	border-radius: 1rem;
 }
 .category_item:hover{
-	border: 0.1rem solid yellow;
-	box-shadow: 0px 0px 6px 0px white;
+	border: 0.1rem solid #f1e189;
+	box-shadow: 0px 0px 6px 0px black;
 }
 .ct_item-active{
 	background: rgb(255, 238, 1);
@@ -184,10 +261,11 @@
 	width: 100%;
 	height: 16rem;
 	color: white;
-	background-color: rgb(66, 66, 66);
+	background-color: rgba(0, 0, 0, 0.85);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	align-items: center;
 	opacity: 0;
 	position: absolute;
 	top: 0;
@@ -195,24 +273,21 @@
 	z-index: 1;
 }
 .item_precio h2{
-	font-size: 4rem;
-	font-weight: bold;
-}
-.item_precio .cantidad, .item_precio .precio{
-	margin: 0 auto;
-	width: 60%;
 	font-size: 2rem;
 	font-weight: bold;
 }
-.item_precio .compra{
-	width: 80%;
+.item_precio .cantidad{
+	margin: 0 auto;
+	width: 60%;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.item_precio .botoncompra{
+	width: 70%;
 	flex-basis: 2rem;
 	margin: 0 auto;
-	border-radius: 1rem;
-}
-.item_precio .nombre{
-	margin: 0 auto;
-	width: 80%;
+	border-radius: 0.6rem;
+	font-size: 1.5rem;
 }
 
 
@@ -223,7 +298,7 @@
 }
 .product-item .item a{/*Los nombres de cada producto*/
 	width: 100%;
-	background: rgb(0, 0, 0);
+	background: #01c5c4 ;
 	padding: 0.5rem 0;
 
 	color: #fff;
@@ -240,8 +315,8 @@
 }
 
 @media screen and (max-width: 900px){
-	.encabezado h1, .icono{
-		font-size: 2rem;
+	.encabezado , .icono, .titulo{
+		font-size: 1.3rem;
 	}
 	.category_list,	.products-list{
 		width: 100%;

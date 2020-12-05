@@ -2,6 +2,7 @@ $(document).ready(inicio)
 function inicio(){
 	$(".botoncompra").click(anade);
 	$("#carrito").load("productos/poncarrito.php");
+
 }
 
 function anade(){
@@ -11,3 +12,5 @@ function anade(){
 	//alert(cantidad);
 	$("#carrito").load("productos/poncarrito.php?p="+$(this).val()+"&cant="+cantidad);
 }
+
+

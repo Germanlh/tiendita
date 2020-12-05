@@ -3,19 +3,18 @@
 $msj="";
 if(isset($_GET['mensaje'])){
     $mensaje=$_GET['mensaje'];
+    switch($mensaje){//evaluamos el tipo de error y enviamos el mensaje de acuerdo  al problema
+      case 1: 
+        $msj="Su compra se ha registrado Correctamente";
+        break;
+      case 2: 
+        $msj="Compra Cancelado";
+        break;
+      default: 
+        break;
+      }
+  echo "<h2 class='msj' id='mensajito'>".$msj."</h2>";
     }
-else{$mensaje=0;}
-  switch($mensaje){//evaluamos el tipo de error y enviamos el mensaje de acuerdo  al problema
-    case 1: 
-      $msj="Su compra se ha registrado Correctamente";
-      break;
-    case 2: 
-      $msj="Compra Cancelado";
-      break;
-    default: 
-      break;
-    }
-echo "<h2 class='msj'>".$msj."</h2>";
 ?>
 
 
@@ -46,9 +45,9 @@ echo "<h2 class='msj'>".$msj."</h2>";
                         <a href="#">'.$fila['nombre'].'</a>
                     </div>
                     <div class="item_precio">
-                        <h2>'.$fila['precio_unitario'].'</h2>
-                        <input type="number" value="1" max="5" min="1" id="num'.$fila['id_producto'].'">
-                        <button value="'.$fila['id_producto'].'" class="botoncompra">Comprar</button>
+                        <h2>$ '.number_format($fila['precio_unitario'], 2, '.', ',').'</h2>
+                        <input type="number" class="cantidad" value="1" max="10" min="1" id="num'.$fila['id_producto'].'">
+                        <button  value="'.$fila['id_producto'].'" class="botoncompra">Comprar</button>
                     </div>
                     ';
                 echo '</div>';  

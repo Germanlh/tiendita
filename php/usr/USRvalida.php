@@ -29,6 +29,7 @@ else{//Existe Coincidencia
 		$_SESSION['usr']=$usr;
 		$_SESSION['nombre']=$fila['nombre'];
 		$_SESSION['permisos']=$fila['permisos'];
+		$_SESSION['horaacceso']=date("Y-m-d H:i:s");
 		/* Si permisos =1 ventana Admin permisos =2 Tienda */
 		header("Location:../tiendita.php");
 		}

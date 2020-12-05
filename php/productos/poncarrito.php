@@ -27,7 +27,6 @@ if(isset($_GET['x'])){
 			array_splice($_SESSION['cantidad'], $i, 1);
 			$_SESSION['contador']--;
 		}
-		header("Location:../tiendita.php");
 	}
 }
 if(isset($_GET['cancela'])){
@@ -68,7 +67,7 @@ if($_SESSION['contador']>0){
 				<td>".$fila['nombre']."</td>
 				<td>".$fila['precio_unitario']."</td>
 				<td> ".number_format($importe,2)."</td>
-				<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button>X</button></a></td>
+				<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button class='botoncito'>X</button></a></td>
 			</tr>
 			";
 			$_SESSION['total'] += $importe;
@@ -84,16 +83,20 @@ if($_SESSION['contador']>0){
 		";
 	echo "</table>";
 	echo "
-		<a href='productos/poncarrito.php?cancela=1'><button>Cancelar</button></a>
-		<a href='productos/confirmar.php'><button>Comprar</button></a>
+		<a href='productos/poncarrito.php?cancela=1'><button class='botoncito'>Cancelar</button></a>
+		<a href='productos/confirmar.php'><button class='botoncito'>Comprar</button></a>
 		";
 	
 	/************************************************************************* */
 	$resultado->free();//Liberamos el resultado
 	$cnxdb->close();//cerramos la base de datos
 	
+	if(isset($_GET['x'])){ 
+		header("Location:../tiendita.php");
+		$_SESSION['total']=0;
+	}
 }
-//<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button>X</button></a></td>
+//<td><a href='productos/poncarrito.php?x=".$_SESSION['producto'][$i]."'><button class='botoncito'>X</button></a></td>
 //<td><button value='".$_SESSION['producto'][$i]."' class='quitar'>X</button></td>
 /************************************************************************************************/
 ?>

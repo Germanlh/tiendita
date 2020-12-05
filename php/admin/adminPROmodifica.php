@@ -21,7 +21,7 @@ if($_FILES['foto']['error']>0){
             nombre='".$nombre."', 
             clase='".$clase."', 
             precio_unitario='".$punit."', 
-            existencias='".$existencias."', 
+            existencias='".$existencias."'
             WHERE id_producto='".$id."'
 			";
 }

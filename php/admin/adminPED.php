@@ -1,11 +1,15 @@
 <div class="pagina-tiendita"><!--******************************************** -->
 <table> 
+      <caption>
+        GESTION DE PEDIDOS
+      </caption>
       <tr>
           <th>id</th>
           <th>Cliente</th>
           <th>Total</th>
           <th>Fecha</th>
           <th>Status</th>
+          <th></th>
           <th></th>
       </tr>
       <?php
@@ -35,28 +39,22 @@
 
               if($fila['servido']==0){
                 echo '
-                <td><a href="admin/adminPEDprocesa.php?op=2&id='.$fila['id_nota'].'"><button>Enviado</button></a></td>
-                <td><a href="admin/adminPEDprocesa.php?op=1&id='.$fila['id_nota'].'"><button>Cancela</button></a></td>
+                <td><a href="admin/adminPEDprocesa.php?op=2&id='.$fila['id_nota'].'"><button class="botoncito">Enviar</button></a></td>
+                <td><a href="admin/adminPEDprocesa.php?op=1&id='.$fila['id_nota'].'"><button class="botoncito">Cancelar</button></a></td>
                 ';
-              }
-              elseif($fila['servido']==1){
+              }elseif($fila['servido']==1){
                 echo '
-                <td><a href="admin/adminPEDprocesa.php?op=3&id='.$fila['id_nota'].'"><button>Terminado</button></a></td>
-                <td><a href="admin/adminPEDprocesa.php?op=1&id='.$fila['id_nota'].'"><button>Cancela</button></a></td>
+                <td><a href="admin/adminPEDprocesa.php?op=3&id='.$fila['id_nota'].'"><button class="botoncito">Terminar</button></a></td>
+                <td><a href="admin/adminPEDprocesa.php?op=1&id='.$fila['id_nota'].'"><button class="botoncito">Cancelar</button></a></td>
                 ';
-              }
-              elseif($fila['servido']==2){echo '<td></td><td></td>';
-
-              }
-              elseif($fila['servido']==3){
+              }elseif($fila['servido']==2){
+                echo '<td></td><td></td>';
+              }elseif($fila['servido']==3){
                 echo '
-                <td><a href="admin/adminPEDprocesa.php?op=4&id='.$fila['id_nota'].'"><button>Reactiva</button></a></td>
+                <td><a href="admin/adminPEDprocesa.php?op=4&id='.$fila['id_nota'].'"><button class="botoncito">Reactivar</button></a></td>
                 <td></td>
                 ';
               }
-
-              
-              
               echo '</tr>';
           }
 

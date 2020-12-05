@@ -11,7 +11,7 @@
 
         <!-- PASSWORD  -->
         <label for="psw">Password</label>
-        <input type="password" name="psw" id="psw" class="caja-texto" placeholder="Password">
+        <input type="password" name="psw" id="psw" class="caja-texto" placeholder="Password" required>
         
         <!-- Confirma PSW  -->
         <label for="conpsw">Confirma Password</label>

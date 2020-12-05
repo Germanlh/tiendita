@@ -57,7 +57,7 @@ if(isset($_GET['op'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiendita AAA</title>
+    <title>Abarrotes AAA</title>
     <link rel="stylesheet" href="css/estilizar.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
   </head>
